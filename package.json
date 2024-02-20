@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "Weather Application",
-  "main": "index.js",
   "scripts": {
     "start": "cd frontend && pnpm dev",
     "build": "cd frontend && pnpm build",
