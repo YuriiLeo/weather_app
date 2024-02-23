@@ -10,13 +10,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.status(200).json({
         status: "Online",
     });
 });
 
-app.use("/", weatherRoutes);
+app.use("/api", weatherRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
