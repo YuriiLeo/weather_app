@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const weatherController = require("../controllers/weatherController");
+const weatherController = require("../services/weatherController");
 
-router.post("/weatherGet", async (req, res) => {
+router.post("/weather", async (req, res) => {
     try {
         const cities = req.body.data;
         const weatherData = await weatherController.fetchWeatherData(cities);
