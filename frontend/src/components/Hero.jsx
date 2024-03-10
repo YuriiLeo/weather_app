@@ -15,7 +15,7 @@ const Hero = () => {
     setError("")
     setLoading(true)
     try {
-      const url = "http://localhost:5000/api/weather";
+      const url = "https://weather-app-backend-azure.vercel.app/api/weather";
       const response = await fetch(url, {
         method: "POST",
         body: JSON.stringify({ data: city.split(",") }),
