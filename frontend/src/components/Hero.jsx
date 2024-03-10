@@ -10,13 +10,12 @@ const Hero = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-
   const fetchApi = async (city) => {
     setSearch([])
     setError("")
     setLoading(true)
     try {
-      const url = "https://backendapiweather.onrender.com/weatherGet";
+      const url = "http://localhost:5000/api/weather";
       const response = await fetch(url, {
         method: "POST",
         body: JSON.stringify({ data: city.split(",") }),
@@ -24,9 +23,12 @@ const Hero = () => {
           "Content-Type": "application/json",
         },
       });
+      // const url = `http://localhost:5000/api/weather/${city}`;
+      // const response = await fetch(url);
       const resJson = await response.json();
 
       const cities = Object.keys(resJson.weather);
+
       const data = cities.map((city) => resJson.weather[city]);
 
       setStatus(true);
@@ -35,7 +37,7 @@ const Hero = () => {
     } catch (error) {
       console.error(error);
       setLoading(false)
-      setError("Check the city name, use English only");
+      setError("Enter the city name in English, use a comma to select multiple cities");
     }
   };
 
@@ -57,10 +59,10 @@ const Hero = () => {
 };
 
 Hero.propTypes = {
-  search: PropTypes.array.isRequired,
-  status: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired,
+  search: PropTypes.array,
+  status: PropTypes.bool,
+  error: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default Hero;

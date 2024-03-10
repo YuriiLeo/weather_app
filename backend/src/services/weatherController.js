@@ -9,7 +9,9 @@ const fetchWeatherData = async (cities) => {
 
     const promises = cities.map(async (city) => {
         try {
-            const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=1&aqi=no&alerts=no`);
+            // const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=1&aqi=no&alerts=no`);
+            const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=0dd91c5baa7d48a59da02929242102&q=${city}&days=1&aqi=no&alerts=no`);
+
             weatherData.push(response.data);
         } catch (error) {
             console.error(`Error fetching data for city ${city}: ${error.message}`);
